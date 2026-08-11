@@ -1,4 +1,4 @@
-package list.todo;
+package com.github.matheusvizzaccaro.mycalc;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
