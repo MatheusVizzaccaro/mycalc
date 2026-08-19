@@ -1,4 +1,8 @@
-package com.github.matheusvizzaccaro.mycalc;
+package com.github.matheusvizzaccaro.mycalc.calculator;
+
+import com.github.matheusvizzaccaro.mycalc.util.JsonManager;
+import net.objecthunter.exp4j.Expression;
+import net.objecthunter.exp4j.ExpressionBuilder;
 
 import java.util.Scanner;
 
@@ -27,6 +31,10 @@ public class Calculator {
             JsonManager jsonMngr = new JsonManager();
 
             jsonMngr.exportJson(calcCode);
+
+            Expression expression = new ExpressionBuilder(calcCode.calcCode).build();
+            double result = expression.evaluate();
+            System.out.println("resultado: " + result);
         } else {
             System.out.println("Operação não conhecida.");
         }

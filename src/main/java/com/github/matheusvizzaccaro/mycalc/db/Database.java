@@ -1,4 +1,4 @@
-package com.github.matheusvizzaccaro.mycalc;
+package com.github.matheusvizzaccaro.mycalc.db;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
@@ -9,7 +9,7 @@ public class Database {
     String url = dotenv.get("DB_URL");
     String username = dotenv.get("DB_USER");
     String password = dotenv.get("DB_PASSWORD");
-    String query = "INSERT INTO teste (username) VALUES (?);";
+    String query = "UPDATE teste SET teste.teste2 = (?) WHERE teste.id = 1;";
     Connection connection;
 
     public void createConnection() {
