@@ -1,5 +1,6 @@
-package com.github.matheusvizzaccaro.mycalc.calculator;
+package com.github.matheusvizzaccaro.mycalc.view;
 
+import com.github.matheusvizzaccaro.mycalc.util.CalcCode;
 import com.github.matheusvizzaccaro.mycalc.util.JsonManager;
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;

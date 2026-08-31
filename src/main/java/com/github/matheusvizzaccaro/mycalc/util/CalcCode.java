@@ -1,4 +1,4 @@
-package com.github.matheusvizzaccaro.mycalc.calculator;
+package com.github.matheusvizzaccaro.mycalc.util;
 
 public class CalcCode {
     String calcCode;

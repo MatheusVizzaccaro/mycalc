@@ -1,6 +1,6 @@
 package com.github.matheusvizzaccaro.mycalc;
 
-import com.github.matheusvizzaccaro.mycalc.calculator.Calculator;
+import com.github.matheusvizzaccaro.mycalc.view.Calculator;
 
 public class Main {
     public static void main(String[] args) {

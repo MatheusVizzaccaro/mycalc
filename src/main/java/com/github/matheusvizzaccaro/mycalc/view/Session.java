@@ -1,11 +1,11 @@
-package com.github.matheusvizzaccaro.mycalc.auth;
+package com.github.matheusvizzaccaro.mycalc.view;
 
 import java.util.Scanner;
 
 public class Session {
-    private String user = "";
-    private boolean authorized = false;
-    // Ambas private para segurança. Posteriormente adicionar getters e setters para realizar a leitura a partir de outras classes.
+    private Integer id;
+    private boolean authorized;
+    //Definidas private para segurança. Posteriormente adicionar getters e setters para realizar a leitura a partir de outras classes.
 
     public void startSession() {
         System.out.println("""

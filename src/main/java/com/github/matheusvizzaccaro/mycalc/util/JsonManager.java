@@ -1,6 +1,5 @@
 package com.github.matheusvizzaccaro.mycalc.util;
 
-import com.github.matheusvizzaccaro.mycalc.calculator.CalcCode;
 import com.github.matheusvizzaccaro.mycalc.db.Database;
 import com.google.gson.Gson;
 
