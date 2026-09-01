@@ -15,9 +15,10 @@ public class Session {
             """);
     Scanner scanner=new Scanner(System.in);
     String input=scanner.nextLine();
-    if(input=="1") {
+    if(input.equals("1")) {
       Login login=new Login();
-    } else if(input=="2") {
+      login.login();
+    } else if(input.equals("2")) {
       SignUp signUp=new SignUp();
     } else {
       System.out.println("Operação inválida.");
