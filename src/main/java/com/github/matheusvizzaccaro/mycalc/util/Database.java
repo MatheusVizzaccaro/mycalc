@@ -11,15 +11,17 @@ public class Database {
   private String username = dotenv.get("DB_USER");
   private String password = dotenv.get("DB_PASSWORD");
 
-  void createConnection() {
+  public Connection createConnection() {
     try {
       Connection connection = DriverManager.getConnection(URL, username, password);
+      return connection;
     } catch(Exception e) {
       System.out.println(e.getMessage());
+      return null;
     }
   }
 
-  void closeConnection(Connection conn) {
+  public void closeConnection(Connection conn) {
     try {
       conn.close();
     } catch(Exception e) {

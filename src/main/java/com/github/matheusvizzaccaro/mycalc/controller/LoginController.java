@@ -1,15 +1,19 @@
 package com.github.matheusvizzaccaro.mycalc.controller;
 
+import com.github.matheusvizzaccaro.mycalc.model.LoginModel;
+
 public class LoginController {
-  public void loginController(String username, String password) {
+  //Regras de negócio para o controller de login
+  //Maior que 3 caracteres de username e menor que 20
+  //Maior que 8 caracteres de senha e menor que 30
+  public Integer getUserIdController(String username, String password) {
     if(username == null || username.length()>20 || username.length() <= 3) {
-      System.out.println("Não passaria para a model");
-      return;
+      return null;
     }
-    if(password == null || password.length()>20 || password.length() <= 3) {
-      System.out.println("Não passaria para a model");
-      return;
+    if(password == null || password.length()>30 || password.length() <= 4) {
+      return null;
     }
-    System.out.println("Passaria para a model.");
+    LoginModel loginModel = new LoginModel();
+    return loginModel.loginSelect(username, password);
   }
 }

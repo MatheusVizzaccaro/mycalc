@@ -17,10 +17,10 @@ public class Login {
     return scanner.nextLine();
   }
 
-  void login() {
+  Integer getUserId() {
     String username = getInputUsername();
     String password = getInputPassword();
     LoginController loginController = new LoginController();
-    loginController.loginController(username, password);
+    return loginController.getUserIdController(username, password);
   }
 }
