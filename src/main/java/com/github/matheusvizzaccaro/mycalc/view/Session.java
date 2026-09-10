@@ -49,8 +49,15 @@ public class Session {
   }
 
 //  public boolean signUp() {
-//    SignUp signUp=new SignUp();
+//    Scanner scanner = new Scanner(System.in);
 //
+//    System.out.println("Digite o nome de usuário desejado:");
+//    username = scanner.nextLine();
+//    System.out.println("Digite sua senha:");
+//    password = scanner.nextLine();
+//
+//    SignUp signUp=new SignUp();
+//    //todo sign up logic as login logic
 //  }
 
 
