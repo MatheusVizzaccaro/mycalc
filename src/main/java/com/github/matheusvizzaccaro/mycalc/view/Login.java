@@ -2,25 +2,17 @@ package com.github.matheusvizzaccaro.mycalc.view;
 
 import com.github.matheusvizzaccaro.mycalc.controller.LoginController;
 
-import java.util.Scanner;
-
 public class Login {
-  private String getInputUsername() {
-    System.out.println("Digite seu nome de usuário:\n");
-    Scanner scanner = new Scanner(System.in);
-    return scanner.nextLine();
+  private final String username;
+  private final String password;
+
+  public Login(String username, String password) {
+    this.username=username;
+    this.password=password;
   }
 
-  private String getInputPassword() {
-    System.out.println("Digite sua senha:\n");
-    Scanner scanner = new Scanner(System.in);
-    return scanner.nextLine();
-  }
-
-  Integer getUserId() {
-    String username = getInputUsername();
-    String password = getInputPassword();
+  public boolean isValidLogin() {
     LoginController loginController = new LoginController();
-    return loginController.getUserIdController(username, password);
+    return loginController.isValidLogin(this.username, this.password);
   }
 }

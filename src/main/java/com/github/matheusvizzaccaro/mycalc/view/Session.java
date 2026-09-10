@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Session {
   private Integer id;
   private String username;
+  private String password;
   private boolean authorized;
 
   public void choiceMenu() {
@@ -27,11 +28,18 @@ public class Session {
   }
 
   public boolean login() {
-    Login login=new Login();
-    setId(login.getUserId());
+    Scanner scanner=new Scanner(System.in);
 
-    if(getId() == null) {
+    System.out.println("Digite seu username:");
+    username = scanner.nextLine();
+    System.out.println("Digite sua senha:");
+    username = scanner.nextLine();
+
+    Login login = new Login(username, password);
+
+    if(!login.isValidLogin()) {
       System.out.println("Credenciais inválidas");
+      setAuthorized(false);
       return false;
     } else {
       setAuthorized(true);
@@ -42,6 +50,7 @@ public class Session {
 
 //  public boolean signUp() {
 //    SignUp signUp=new SignUp();
+//
 //  }
 
 
@@ -57,7 +66,7 @@ public class Session {
     return authorized;
   }
 
-  public void setAuthorized(boolean authorized) {
+  private void setAuthorized(boolean authorized) {
     this.authorized=authorized;
   }
 }
