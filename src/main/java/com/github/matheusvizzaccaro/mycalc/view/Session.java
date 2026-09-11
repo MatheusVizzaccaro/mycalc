@@ -8,6 +8,13 @@ public class Session {
   private String password;
   private boolean authorized;
 
+  public Session(Integer id, String username, String password, Boolean authorized) {
+    this.id = id;
+    this.username = username;
+    this.password = password;
+    this.authorized = authorized;
+  }
+
   public void choiceMenu() {
     System.out.println("""
             Como você deseja iniciar uma sessão?

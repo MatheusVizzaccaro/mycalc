@@ -5,23 +5,16 @@ import com.github.matheusvizzaccaro.mycalc.controller.SignUpController;
 import java.util.Scanner;
 
 public class SignUp {
-  private String getInputUsername() {
-    System.out.println("Digite seu nome de usuário:\n");
-    Scanner scanner = new Scanner(System.in);
-    return scanner.nextLine();
-  }
+  private final String username;
+  private final String password;
 
-  private String getInputPassword() {
-    System.out.println("Digite sua senha:\n");
-    Scanner scanner = new Scanner(System.in);
-    return scanner.nextLine();
+  public SignUp(String username, String password) {
+    this.username = username;
+    this.password = password;
   }
 
   public Integer setUserInfo() {
-    String username = getInputUsername();
-    String password = getInputPassword();
-
     SignUpController signUpController = new SignUpController();
-    return signUpController.setUserInfo(username, password);
+    return signUpController.setUserInfo(this.username, this.password);
   }
 }
