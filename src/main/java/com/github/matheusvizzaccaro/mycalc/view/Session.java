@@ -8,4 +8,12 @@ public class Session {
     this.username=username;
     this.id=id;
   }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public Integer getId() {
+    return id;
+  }
 }

@@ -3,7 +3,7 @@ package com.github.matheusvizzaccaro.mycalc.view;
 import java.util.Scanner;
 
 public class AuthMenu {
-  public void choiceMenu() {
+  public Calculator choiceMenu() {
     System.out.println("""
             Como você deseja iniciar uma sessão?
             1 - Login
@@ -14,11 +14,13 @@ public class AuthMenu {
     String input=scanner.nextLine();
 
     if(input.equals("1")) {
-      login();
+      return displayCalculator();
     } else if(input.equals("2")) {
       signUp();
+      return null;
     } else {
       System.out.println("Operação inválida.");
+      return null;
     }
   }
 
@@ -58,5 +60,14 @@ public class AuthMenu {
     }
     System.out.println("Cadastro concluído");
     return true;
+  }
+
+  private Calculator displayCalculator() {
+    Session session = login();
+
+    if(session != null) {
+      return new Calculator(session);
+    }
+    return null;
   }
 }

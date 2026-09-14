@@ -9,7 +9,7 @@ public class JsonManager {
     //To do wip
   }
 
-  public void exportJson(CalcCode calcCode) {
+  public void exportJson(Calculation calcCode) {
     try {
       FileWriter fileWriter=new FileWriter("calc.json");
       Gson gson=new Gson();
