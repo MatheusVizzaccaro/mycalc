@@ -1,12 +1,10 @@
 package com.github.matheusvizzaccaro.mycalc;
 
-import com.github.matheusvizzaccaro.mycalc.view.Session;
+import com.github.matheusvizzaccaro.mycalc.view.AuthMenu;
 
 public class Main {
   public static void main(String[] args) {
-//    Calculator calc=new Calculator();
-//    calc.createCalc(1);
-    Session session = new Session();
-    session.choiceMenu();
+    AuthMenu authMenu= new AuthMenu();
+    authMenu.choiceMenu();
   }
 }

@@ -1,14 +1,14 @@
 package com.github.matheusvizzaccaro.mycalc.model;
 
 import com.github.matheusvizzaccaro.mycalc.util.Database;
-import com.github.matheusvizzaccaro.mycalc.view.Session;
+import com.github.matheusvizzaccaro.mycalc.view.AuthMenu;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class LoginModel {
-  public Boolean loginSelect(String username, String password) {
+  public Integer loginSelect(String username, String password) {
     Database db = new Database();
     Connection conn = db.createConnection();
     try (PreparedStatement preparedStatement = conn.prepareStatement("SELECT id, username, password FROM user WHERE username = ? AND password = ?")) {
@@ -18,19 +18,15 @@ public class LoginModel {
       try (ResultSet resultSet = preparedStatement.executeQuery()) {
         if(resultSet.next()){
           Integer id = resultSet.getInt("id");
-          String r_username = resultSet.getString("username");
-          String r_password = resultSet.getString("password");
           db.closeConnection(conn);
-
-          Session session = new Session(id, r_username, r_password, true);
-          return true;
+          return id;
         } else {
-          return false;
+          return null;
         }
       }
     } catch(Exception e) {
       System.out.println(e.getMessage());
-      return false;
+      return null;
     }
   }
 }

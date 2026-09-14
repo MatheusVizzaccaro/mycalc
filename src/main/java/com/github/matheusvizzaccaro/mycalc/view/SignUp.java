@@ -13,7 +13,7 @@ public class SignUp {
     this.password = password;
   }
 
-  public Integer setUserInfo() {
+  public Boolean setUserInfo() {
     SignUpController signUpController = new SignUpController();
     return signUpController.setUserInfo(this.username, this.password);
   }
