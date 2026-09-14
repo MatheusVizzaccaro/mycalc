@@ -1,7 +1,5 @@
 package com.github.matheusvizzaccaro.mycalc.util;
 
-import com.github.matheusvizzaccaro.mycalc.controller.CalculationController;
-
 public class Calculation {
   private String calcCode;
 

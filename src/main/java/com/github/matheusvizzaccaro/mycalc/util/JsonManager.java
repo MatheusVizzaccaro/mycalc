@@ -5,8 +5,9 @@ import com.google.gson.Gson;
 import java.io.FileWriter;
 
 public class JsonManager {
+  //todo: validar necessidade de existência (acho que não)
   public void readJson() {
-    //To do wip
+
   }
 
   public void exportJson(Calculation calcCode) {

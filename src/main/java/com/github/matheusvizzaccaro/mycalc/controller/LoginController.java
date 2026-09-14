@@ -3,6 +3,8 @@ package com.github.matheusvizzaccaro.mycalc.controller;
 import com.github.matheusvizzaccaro.mycalc.model.LoginModel;
 
 public class LoginController {
+  //todo: implementar regras de negócio
+
   //Regras de negócio para o controller de login
   //Maior que 3 caracteres de username e menor que 20
   //Maior que 8 caracteres de senha e menor que 30

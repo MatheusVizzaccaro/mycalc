@@ -2,8 +2,6 @@ package com.github.matheusvizzaccaro.mycalc.view;
 
 import com.github.matheusvizzaccaro.mycalc.controller.SignUpController;
 
-import java.util.Scanner;
-
 public class SignUp {
   private final String username;
   private final String password;

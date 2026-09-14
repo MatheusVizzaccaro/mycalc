@@ -5,6 +5,7 @@ import com.github.matheusvizzaccaro.mycalc.util.Calculation;
 
 public class CalculationController {
   public Boolean insertCalculation(Calculation calculation) {
+    //todo: implementar regras de negócio
     if(calculation.getCalcCode() == null) {
       return false;
     }
