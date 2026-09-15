@@ -54,7 +54,7 @@ public class Calculator {
       cCode+=params[i];
     }
 
-    return new Calculation(cCode);
+    return new Calculation(session, cCode);
   }
 
   private Boolean insertCalculation(Calculation calculation) {

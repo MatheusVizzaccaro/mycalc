@@ -5,6 +5,7 @@ import com.github.matheusvizzaccaro.mycalc.model.SignUpModel;
 public class SignUpController {
   public boolean setUserInfo(String username, String password) {
     //todo: implementar/validar regras de negócio
+    //TODO: trocar os parametros para passar uma classe SignUp.
 
     if(username == null || username.length() < 5 || username.length() > 20) {
       return false;

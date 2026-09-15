@@ -1,26 +1,10 @@
 package com.github.matheusvizzaccaro.mycalc.model;
 
-import com.github.matheusvizzaccaro.mycalc.util.Database;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-
+import com.github.matheusvizzaccaro.mycalc.database.Database;
+//TODO: trocar os parametros para passar uma classe SignUp.
 public class SignUpModel {
   public Boolean insertUser(String username, String password) {
     Database db=new Database();
-    Connection conn=db.createConnection();
-    try(PreparedStatement preparedStatement=conn.prepareStatement("INSERT INTO user(id, username, password) VALUES (default, ?, ?);")) {
-      preparedStatement.setString(1, username);
-      preparedStatement.setString(2, password);
-
-      if(preparedStatement.executeUpdate() > 0) {
-        return true;
-      } else {
-        return false;
-      }
-    } catch(Exception e) {
-      System.out.println(e.getMessage());
-      return false;
-    }
+      return db.insert("INSERT INTO user(id, username, password) VALUES (default, %s, %s);".formatted(username, password));
   }
 }

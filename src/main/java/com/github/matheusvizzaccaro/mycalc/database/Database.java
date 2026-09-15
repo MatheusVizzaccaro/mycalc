@@ -1,9 +1,10 @@
-package com.github.matheusvizzaccaro.mycalc.util;
+package com.github.matheusvizzaccaro.mycalc.database;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 public class Database {
   Dotenv dotenv = Dotenv.load();
@@ -27,5 +28,23 @@ public class Database {
     } catch(Exception e) {
       System.out.println(e.getMessage());
     }
+  }
+
+  public boolean insert(String query) {
+    Connection connection = createConnection();
+    try(PreparedStatement preparedStatement=conn.prepareStatement(query)) {
+
+      if(preparedStatement.executeUpdate() > 0) {
+        closeConnection(connection);
+        return true;
+      } else {
+        closeConnection(connection);
+       return false;
+      }
+    } catch(Exception e) {
+      closeConnection(connection);
+      System.out.println(e.getMessage());
+    }
+    return false;
   }
 }

@@ -1,7 +1,6 @@
 package com.github.matheusvizzaccaro.mycalc.model;
 
-import com.github.matheusvizzaccaro.mycalc.util.Database;
-import com.github.matheusvizzaccaro.mycalc.view.AuthMenu;
+import com.github.matheusvizzaccaro.mycalc.database.Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
