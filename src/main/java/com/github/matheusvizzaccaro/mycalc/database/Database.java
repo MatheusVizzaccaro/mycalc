@@ -6,8 +6,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Database {
+  //TODO: implement new method so it can overwrite ? (setString)
   Dotenv dotenv = Dotenv.load();
   private String URL = dotenv.get("DB_URL");
   private String username = dotenv.get("DB_USER");
@@ -54,19 +57,22 @@ public class Database {
   }
 
   //pode retornar uma List<String>
-  public ResultSet select(String query) {
+  public List<String> select(String query) {
+    List<String> returnList = new ArrayList<>();
+
     Connection connection = createConnection();
     try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
       try (ResultSet resultSet = preparedStatement.executeQuery()) {
-        if(resultSet.next()){
-          return resultSet;
-        } else {
-          return null;
+        if(resultSet.next()) {
+          for(int i=1;i<resultSet.getMetaData().getColumnCount();i++) {
+            returnList.add(resultSet.getString(i));
+          }
         }
       }
     } catch(Exception e) {
       System.out.println(e.getMessage());
       return null;
     }
+    return returnList;
   }
 }

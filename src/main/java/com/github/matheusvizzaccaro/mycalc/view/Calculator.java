@@ -59,6 +59,6 @@ public class Calculator {
 
   private Boolean insertCalculation(Calculation calculation) {
     CalculationController calculationController = new CalculationController();
-    return calculationController.insertCalculation(calculation);
+    return calculationController.insertCalculation(calculation, session);
   }
 }
