@@ -4,6 +4,8 @@ import com.github.matheusvizzaccaro.mycalc.model.CalculationModel;
 import com.github.matheusvizzaccaro.mycalc.util.Calculation;
 import com.github.matheusvizzaccaro.mycalc.view.Session;
 
+import java.util.List;
+
 public class CalculationController {
   public Boolean insertCalculation(Calculation calculation, Session session) {
     //todo: implementar regras de negócio
@@ -13,5 +15,13 @@ public class CalculationController {
 
     CalculationModel calculationModel = new CalculationModel();
     return calculationModel.insertCalculation(calculation, session);
+  }
+
+  public List<String> getCalculations(Session session) {
+    if(session.getId() == null) {
+      return null;
+    }
+    CalculationModel calculationModel = new CalculationModel();
+    return calculationModel.getCalculations(session);
   }
 }
