@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
-  //TODO: implement new method so it can overwrite ? (setString)
   Dotenv dotenv = Dotenv.load();
   private String URL = dotenv.get("DB_URL");
   private String username = dotenv.get("DB_USER");
@@ -34,9 +33,13 @@ public class Database {
     }
   }
 
-  private boolean executeDML(String query) {
+  private boolean executeDML(String query, String[] parameters) {
     Connection connection = createConnection();
     try(PreparedStatement preparedStatement=connection.prepareStatement(query)) {
+
+      for(int i=0;i<parameters.length;i++) {
+        preparedStatement.setString(i+1, parameters[i]);
+      }
 
       if(preparedStatement.executeUpdate() > 0) {
         closeConnection(connection);
@@ -52,8 +55,8 @@ public class Database {
     return false;
   }
 
-  public boolean execute(String query) {
-    return executeDML(query);
+  public boolean execute(String query, String[] parameters) {
+    return executeDML(query, parameters);
   }
 
   public List<String> select(String query, String[] parameters) {

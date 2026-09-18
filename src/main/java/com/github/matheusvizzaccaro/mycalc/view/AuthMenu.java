@@ -54,7 +54,7 @@ public class AuthMenu {
 
     SignUp signUp=new SignUp(username, password);
 
-    if(!signUp.setUserInfo()) {
+    if(!signUp.setUserInfo(signUp)) {
       System.out.println("O cadastro não pode ser concluído");
       return false;
     }

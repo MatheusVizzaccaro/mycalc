@@ -5,6 +5,6 @@ import com.github.matheusvizzaccaro.mycalc.database.Database;
 public class SignUpModel {
   public Boolean insertUser(String username, String password) {
     Database db=new Database();
-      return db.execute("INSERT INTO user(id, username, password) VALUES (default, %s, %s);".formatted(username, password));
+      return db.execute("INSERT INTO user(id, username, password) VALUES (default, ?, ?);", new String[]{username, password});
   }
 }

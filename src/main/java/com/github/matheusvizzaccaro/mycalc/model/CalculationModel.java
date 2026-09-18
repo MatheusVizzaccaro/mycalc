@@ -11,6 +11,6 @@ public class CalculationModel {
     }
 
     Database database = new Database();
-    return database.execute("INSERT INTO calculations(id, code, datetime_creation, user_id) VALUES (default, %s, CURRENT_DATETIME(), %d)".formatted(calculation.getCalcCode(), session.getId()));
+    return database.execute("INSERT INTO calculations(id, code, datetime_creation, user_id) VALUES (default, ?, CURRENT_DATETIME(), ?)", new String[]{calculation.getCalcCode(), String.valueOf(session.getId())});
   }
 }

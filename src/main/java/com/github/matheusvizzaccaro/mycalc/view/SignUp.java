@@ -11,8 +11,16 @@ public class SignUp {
     this.password = password;
   }
 
-  public Boolean setUserInfo() {
+  public Boolean setUserInfo(SignUp signUp) {
     SignUpController signUpController = new SignUpController();
-    return signUpController.setUserInfo(this.username, this.password);
+    return signUpController.setUserInfo(signUp);
+  }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public String getPassword() {
+    return password;
   }
 }

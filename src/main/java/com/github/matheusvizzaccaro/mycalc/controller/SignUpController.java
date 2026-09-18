@@ -1,22 +1,22 @@
 package com.github.matheusvizzaccaro.mycalc.controller;
 
 import com.github.matheusvizzaccaro.mycalc.model.SignUpModel;
+import com.github.matheusvizzaccaro.mycalc.view.SignUp;
 
 public class SignUpController {
-  public boolean setUserInfo(String username, String password) {
+  public boolean setUserInfo(SignUp signup) {
     //todo: implementar/validar regras de negócio
-    //TODO: trocar os parametros para passar uma classe SignUp.
 
-    if(username == null || username.length() < 5 || username.length() > 20) {
+    if(signup.getUsername() == null || signup.getUsername().length() < 5 || signup.getUsername().length() > 20) {
       return false;
     }
 
-    if(password == null || password.length() < 8 || password.length() > 20) {
+    if(signup.getPassword() == null || signup.getPassword().length() < 8 || signup.getPassword().length() > 20) {
       return false;
     }
 
-    String treatedUsername = username.trim();
-    String treatedPassword = password.trim();
+    String treatedUsername = signup.getUsername().trim();
+    String treatedPassword = signup.getPassword().trim();
 
     SignUpModel signUpModel = new SignUpModel();
     if(signUpModel.insertUser(treatedUsername, treatedPassword)) {
