@@ -5,6 +5,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class Database {
   Dotenv dotenv = Dotenv.load();
@@ -12,7 +13,7 @@ public class Database {
   private String username = dotenv.get("DB_USER");
   private String password = dotenv.get("DB_PASSWORD");
 
-  public Connection createConnection() {
+  private Connection createConnection() {
     try {
       Connection connection = DriverManager.getConnection(URL, username, password);
       return connection;
@@ -22,7 +23,7 @@ public class Database {
     }
   }
 
-  public void closeConnection(Connection conn) {
+  private void closeConnection(Connection conn) {
     try {
       conn.close();
     } catch(Exception e) {
@@ -30,9 +31,9 @@ public class Database {
     }
   }
 
-  public boolean insert(String query) {
+  private boolean executeDML(String query) {
     Connection connection = createConnection();
-    try(PreparedStatement preparedStatement=conn.prepareStatement(query)) {
+    try(PreparedStatement preparedStatement=connection.prepareStatement(query)) {
 
       if(preparedStatement.executeUpdate() > 0) {
         closeConnection(connection);
@@ -46,5 +47,26 @@ public class Database {
       System.out.println(e.getMessage());
     }
     return false;
+  }
+
+  public boolean execute(String query) {
+    return executeDML(query);
+  }
+
+  //pode retornar uma List<String>
+  public ResultSet select(String query) {
+    Connection connection = createConnection();
+    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+      try (ResultSet resultSet = preparedStatement.executeQuery()) {
+        if(resultSet.next()){
+          return resultSet;
+        } else {
+          return null;
+        }
+      }
+    } catch(Exception e) {
+      System.out.println(e.getMessage());
+      return null;
+    }
   }
 }

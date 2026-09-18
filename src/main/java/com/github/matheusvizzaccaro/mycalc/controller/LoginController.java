@@ -1,6 +1,7 @@
 package com.github.matheusvizzaccaro.mycalc.controller;
 
 import com.github.matheusvizzaccaro.mycalc.model.LoginModel;
+import com.github.matheusvizzaccaro.mycalc.view.Login;
 
 public class LoginController {
   //todo: implementar regras de negócio
@@ -8,14 +9,14 @@ public class LoginController {
   //Regras de negócio para o controller de login
   //Maior que 3 caracteres de username e menor que 20
   //Maior que 8 caracteres de senha e menor que 30
-  public Integer isValidLogin(String username, String password) {
-    if(username == null || username.length()>20 || username.length() <= 3) {
+  public Integer isValidLogin(Login login) {
+    if(login.getUsername() == null || login.getUsername().length()>20 || login.getUsername().length() <= 3) {
       return null;
     }
-    if(password == null || password.length()>30 || password.length() <= 4) {
+    if(login.getPassword() == null || login.getPassword().length()>30 || login.getPassword().length() <= 4) {
       return null;
     }
     LoginModel loginModel = new LoginModel();
-    return loginModel.loginSelect(username, password);
+    return loginModel.loginSelect(login.getUsername(), login.getPassword());
   }
 }

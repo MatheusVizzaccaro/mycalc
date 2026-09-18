@@ -12,9 +12,9 @@ public class Login {
     this.password=password;
   }
 
-  public boolean isValidLogin() {
+  public boolean isValidLogin(Login login) {
     LoginController loginController = new LoginController();
-    this.id = loginController.isValidLogin(this.username, this.password);
+    this.id = loginController.isValidLogin(login);
     if(this.id != null) {
       return true;
     }
@@ -23,5 +23,13 @@ public class Login {
 
   public Integer getId() {
     return id;
+  }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public String getPassword() {
+    return password;
   }
 }

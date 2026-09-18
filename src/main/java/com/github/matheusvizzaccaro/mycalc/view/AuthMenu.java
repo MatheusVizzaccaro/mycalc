@@ -34,7 +34,7 @@ public class AuthMenu {
 
     Login login = new Login(username, password);
 
-    if(!login.isValidLogin()) {
+    if(!login.isValidLogin(login)) {
       System.out.println("Credenciais inválidas");
       return null;
     }
