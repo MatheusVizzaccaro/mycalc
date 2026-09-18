@@ -56,15 +56,19 @@ public class Database {
     return executeDML(query);
   }
 
-  //pode retornar uma List<String>
-  public List<String> select(String query) {
+  public List<String> select(String query, String[] parameters) {
     List<String> returnList = new ArrayList<>();
 
     Connection connection = createConnection();
     try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+      for(int i=0;i<parameters.length;i++) {
+        preparedStatement.setString(i+1, parameters[i]);
+      }
+
       try (ResultSet resultSet = preparedStatement.executeQuery()) {
-        if(resultSet.next()) {
-          for(int i=1;i<resultSet.getMetaData().getColumnCount();i++) {
+        while(resultSet.next()) {
+          for(int i=1;i<=resultSet.getMetaData().getColumnCount();i++) {
             returnList.add(resultSet.getString(i));
           }
         }

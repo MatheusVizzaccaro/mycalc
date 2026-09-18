@@ -17,6 +17,6 @@ public class LoginController {
       return null;
     }
     LoginModel loginModel = new LoginModel();
-    return loginModel.loginSelect(login.getUsername(), login.getPassword());
+    return loginModel.loginSelect(login);
   }
 }
