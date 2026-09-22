@@ -40,11 +40,11 @@ public class AuthMenu {
     }
 
     System.out.println("Acesso liberado");
-    Session session = new Session(username, login.getId());
-    return session;
+    return new Session(username, login.getId());
   }
 
   public boolean signUp() {
+    //TODO ANALISAR SE ISSO PODE VIRAR VOID
     Scanner scanner = new Scanner(System.in);
 
     System.out.println("Digite o nome de usuário desejado:");
@@ -52,7 +52,7 @@ public class AuthMenu {
     System.out.println("Digite sua senha:");
     String password = scanner.nextLine();
 
-    SignUp signUp=new SignUp(username, password);
+    SignUp signUp=new SignUp(username.trim(), password.trim());
 
     if(!signUp.setUserInfo(signUp)) {
       System.out.println("O cadastro não pode ser concluído");

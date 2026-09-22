@@ -15,11 +15,8 @@ public class SignUpController {
       return false;
     }
 
-    String treatedUsername = signup.getUsername().trim();
-    String treatedPassword = signup.getPassword().trim();
-
     SignUpModel signUpModel = new SignUpModel();
-    if(signUpModel.insertUser(treatedUsername, treatedPassword)) {
+    if(signUpModel.insertUser(signup)) {
       return true;
     }
     return false;
