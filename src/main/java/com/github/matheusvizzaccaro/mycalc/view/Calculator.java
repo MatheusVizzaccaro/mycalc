@@ -50,12 +50,18 @@ public class Calculator {
   }
 
   private void createCalculation() {
-    System.out.println("Escreva o cálculo desejado separado apenas por espaço e os sinais.\n(Ex: 10 + 20)");
     Scanner scanner=new Scanner(System.in);
-    String input=scanner.nextLine();
-    JsonManager jsonMngr=new JsonManager();
 
-    Calculation calculation = createCode(input);
+    System.out.println("Escreva o título desse cálculo:");
+    String title = scanner.nextLine();
+
+    System.out.println("Escreva a descrição desse cálculo:");
+    String description = scanner.nextLine();
+
+    System.out.println("Escreva o cálculo desejado separado apenas por espaço e os sinais.\n(Ex: 10 + 20)");
+    String input=scanner.nextLine();
+
+    Calculation calculation = createCode(title, description, input);
     if(insertCalculation(calculation)) {
       System.out.println("Cálculo cadastrado com sucesso.");
     }
@@ -67,7 +73,7 @@ public class Calculator {
     System.out.println("resultado: "+result);
   }
 
-  private Calculation createCode(String input) {
+  private Calculation createCode(String title, String description, String input) {
     String cCode="";
     String[] params=input.split(" ");
 
@@ -75,7 +81,7 @@ public class Calculator {
       cCode+=params[i];
     }
 
-    return new Calculation(session, cCode);
+    return new Calculation(session.getId(), cCode, title, description);
   }
 
   private Boolean insertCalculation(Calculation calculation) {

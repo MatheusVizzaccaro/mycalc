@@ -43,7 +43,7 @@ public class AuthMenu {
     return new Session(username, login.getId());
   }
 
-  public boolean signUp() {
+  public void signUp() {
     //TODO ANALISAR SE ISSO PODE VIRAR VOID
     Scanner scanner = new Scanner(System.in);
 
@@ -56,10 +56,8 @@ public class AuthMenu {
 
     if(!signUp.setUserInfo(signUp)) {
       System.out.println("O cadastro não pode ser concluído");
-      return false;
     }
     System.out.println("Cadastro concluído");
-    return true;
   }
 
   private Calculator displayCalculator() {

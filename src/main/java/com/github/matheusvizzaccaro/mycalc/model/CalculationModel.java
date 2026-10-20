@@ -13,7 +13,7 @@ public class CalculationModel {
     }
 
     Database database = new Database();
-    return database.execute("INSERT INTO calculations(id, code, datetime_creation, user_id) VALUES (default, ?, CURRENT_TIMESTAMP(), ?)", new String[]{calculation.getCalcCode(), String.valueOf(session.getId())});
+    return database.execute("INSERT INTO calculation(id, title, description, code, datetime_creation, user_id) VALUES (default, ?, ?, ?, CURRENT_TIMESTAMP(), ?)", new String[]{calculation.getTitle(), calculation.getDescription(),  calculation.getCalcCode(), String.valueOf(session.getId())});
   }
 
   public List<String> getCalculations(Session session) {
@@ -21,6 +21,6 @@ public class CalculationModel {
       return null;
     }
     Database database = new Database();
-    return database.select("SELECT * FROM calculations WHERE user_id = ?", new String[]{String.valueOf(session.getId())});
+    return database.select("SELECT code, title, description, datetime_creation FROM calculation WHERE user_id = ?", new String[]{String.valueOf(session.getId())});
   }
 }
