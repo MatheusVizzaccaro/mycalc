@@ -2,7 +2,6 @@ package com.github.matheusvizzaccaro.mycalc.view;
 
 import com.github.matheusvizzaccaro.mycalc.controller.CalculationController;
 import com.github.matheusvizzaccaro.mycalc.util.Calculation;
-import com.github.matheusvizzaccaro.mycalc.util.JsonManager;
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
 
@@ -40,15 +39,6 @@ public class Calculator {
     }
   }
 
-  private void showCalculations() {
-    CalculationController calculationController = new CalculationController();
-    List<String> calculations = calculationController.getCalculations(session);
-
-    for(int i=0;i<calculations.size();i++) {
-      System.out.println(calculations.get(i));
-    }
-  }
-
   private void createCalculation() {
     Scanner scanner=new Scanner(System.in);
 
@@ -67,10 +57,28 @@ public class Calculator {
     }
   }
 
-  private void evaluateCalculation(String cCode) {
+  private void showCalculations() {
+    CalculationController calculationController = new CalculationController();
+    List<String> calculations = calculationController.getCalculations(session);
+
+    System.out.println("""
+            Título: %s
+            Descrição: %s
+            Data de Criação: %s
+            
+            Cálculo: %s
+            Resultado: %.2f
+            """.formatted(calculations.get(1),
+            calculations.get(2),
+            calculations.get(3),
+            calculations.get(0),
+            evaluateCalculation(calculations.get(0)))
+    );
+  }
+
+  private double evaluateCalculation(String cCode) {
     Expression expression=new ExpressionBuilder(cCode).build();
-    double result=expression.evaluate();
-    System.out.println("resultado: "+result);
+    return expression.evaluate();
   }
 
   private Calculation createCode(String title, String description, String input) {
